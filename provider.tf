@@ -5,6 +5,12 @@ terraform {
       version = "6.18.0"
     }
   }
+
+  backend "s3" {
+    bucket = "terraform-lab-davigdc"
+    key    = "lab/terraform.tfstate"
+    region = "us-east-1"
+  }
 }
 
 provider "aws" {
