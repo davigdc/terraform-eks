@@ -6,10 +6,20 @@ module "eks_network" {
 }
 
 module "eks_cluster" {
-  source           = "./modules/cluster"
-  project_name     = var.project_name
-  tags             = local.tags
-  k8s_version      = var.k8s_version
-  public_subnet_1a = module.eks_network.subnet_pub_1a
-  public_subnet_1b = module.eks_network.subnet_pub_1b
+  source                        = "./modules/cluster"
+  project_name                  = var.project_name
+  tags                          = local.tags
+  k8s_version                   = var.k8s_version
+  public_subnet_1a              = module.eks_network.subnet_pub_1a
+  public_subnet_1b              = module.eks_network.subnet_pub_1b
+  user_arn_cluster_access_entry = var.user_arn_cluster_access_entry
+}
+
+module "managed_node_group" {
+  source            = "./modules/managed-node-group"
+  project_name      = var.project_name
+  tags              = local.tags
+  cluter_name       = module.eks_cluster.eks_cluter_name
+  private_subnet_1a = module.eks_network.subnet_pub_1a
+  private_subnet_1b = module.eks_network.subnet_pub_1b
 }
