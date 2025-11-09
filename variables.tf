@@ -12,3 +12,13 @@ variable "k8s_version" {
   type        = string
   description = "K8s version to set on the cluster EKS"
 }
+
+variable "region" {
+  type        = string
+  description = "AWS Region to create the resources"
+}
+
+variable "tags" {
+  type        = map(string)
+  description = "A map of tags to allocate on all AWS resources"
+}

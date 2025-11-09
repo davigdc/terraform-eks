@@ -41,6 +41,8 @@ aws eks update-kubeconfig --region us-east-1 --name ekslab-eks-cluster
 | <a name="input_cidr_block"></a> [cidr\_block](#input\_cidr\_block) | Networking CIDR block to be used for the VPC | `string` | n/a | yes |
 | <a name="input_k8s_version"></a> [k8s\_version](#input\_k8s\_version) | K8s version to set on the cluster EKS | `string` | n/a | yes |
 | <a name="input_project_name"></a> [project\_name](#input\_project\_name) | Project name to be used to name the resources (Name tag) | `string` | n/a | yes |
+| <a name="input_region"></a> [region](#input\_region) | AWS Region to create the resources | `string` | n/a | yes |
+| <a name="input_tags"></a> [tags](#input\_tags) | A map of tags to allocate on all AWS resources | `map(string)` | n/a | yes |
 
 ## Outputs
 

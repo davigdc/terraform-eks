@@ -13,16 +13,10 @@ terraform {
       version = "3.1.0"
     }
   }
-
-  backend "s3" {
-    bucket = "terraform-lab-davigdc"
-    key    = "lab/terraform.tfstate"
-    region = "us-east-1"
-  }
 }
 
 provider "aws" {
-  region = "us-east-1"
+  region = var.region
 }
 
 provider "kubernetes" {
