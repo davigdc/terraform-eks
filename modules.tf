@@ -6,13 +6,12 @@ module "eks_network" {
 }
 
 module "eks_cluster" {
-  source                        = "./modules/cluster"
-  project_name                  = var.project_name
-  tags                          = local.tags
-  k8s_version                   = var.k8s_version
-  public_subnet_1a              = module.eks_network.subnet_pub_1a
-  public_subnet_1b              = module.eks_network.subnet_pub_1b
-  user_arn_cluster_access_entry = var.user_arn_cluster_access_entry
+  source           = "./modules/cluster"
+  project_name     = var.project_name
+  tags             = local.tags
+  k8s_version      = var.k8s_version
+  public_subnet_1a = module.eks_network.subnet_pub_1a
+  public_subnet_1b = module.eks_network.subnet_pub_1b
 }
 
 module "managed_node_group" {
@@ -22,4 +21,14 @@ module "managed_node_group" {
   cluter_name       = module.eks_cluster.eks_cluter_name
   private_subnet_1a = module.eks_network.subnet_pub_1a
   private_subnet_1b = module.eks_network.subnet_pub_1b
+}
+
+module "eks_aws_load_balancer_controller" {
+  depends_on   = [module.eks_cluster]
+  source       = "./modules/aws-load-balancer-controller"
+  project_name = var.project_name
+  tags         = local.tags
+  oidc         = module.eks_cluster.oidc
+  cluter_name  = module.eks_cluster.eks_cluter_name
+  vpcid        = module.eks_network.vpcid
 }

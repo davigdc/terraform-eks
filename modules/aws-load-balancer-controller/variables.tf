@@ -8,17 +8,17 @@ variable "tags" {
   description = "Tags to be added to AWS resources"
 }
 
-variable "k8s_version" {
+variable "oidc" {
   type        = string
-  description = "K8s version to set on the cluster EKS"
+  description = "HTTPS URL from OIDC provider of the EKS Cluster"
 }
 
-variable "public_subnet_1a" {
+variable "cluter_name" {
   type        = string
-  description = "Subnet to create EKS cluster AZ 1a"
+  description = "EKS cluster name"
 }
 
-variable "public_subnet_1b" {
+variable "vpcid" {
   type        = string
-  description = "Subnet to create EKS cluster AZ 1b"
+  description = "VPC ID"
 }
