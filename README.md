@@ -1,8 +1,8 @@
 # terraform-eks
-Creating a EKS cluster on AWS using Terraform.
+Este projeto é a prática do curso [Terraform para AWS](https://www.udemy.com/course/terraform-para-aws) do Instrutor Mateus Müller.
 
-
-aws eks update-kubeconfig --region us-east-1 --name ekslab-eks-cluster
+Comando útil para atualizar o Kubeconfig:
+```aws eks update-kubeconfig --region us-east-1 --name ekslab-eks-cluster```
 <!-- BEGIN_TF_DOCS -->
 ## Requirements
 
